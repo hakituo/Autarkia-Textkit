@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "Autarkia-Textkit"
+version = "0.1.0"
+description = "Chinese chat text segmentation and set similarity measures: bubble splitting, cleaning, numbered lists, emoji gluing, Markdown span repair, IoMax/containment/Jaccard/ngram."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Shihao Qi", email = "qishihao512@gmail.com" },
+]
+keywords = [
+    "text-segmentation",
+    "chinese",
+    "nlp",
+    "chat",
+    "similarity",
+    "jaccard",
+    "containment",
+    "autarkia",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: Linguistic",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+segmenter = ["jieba>=0.42"]
+
+[project.urls]
+Homepage = "https://qishihao.icu/projects/autarkia"
+Repository = "https://github.com/hakituo/Autarkia-Textkit"
+Roadmap = "https://github.com/hakituo/Autarkia-tool/blob/main/ROADMAP.md"
+"Autarkia Runtime" = "https://github.com/hakituo/Autarkia"
+Author = "https://qishihao.icu"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/autarkia_textkit"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "README.md", "LICENSE"]
