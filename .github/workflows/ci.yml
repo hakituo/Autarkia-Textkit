@@ -12,15 +12,33 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.10", "3.11", "3.12", "3.13"]
+        segmenter: ["off"]
+        include:
+          # The optional jieba extra needs its own leg; the default matrix
+          # above proves the no-jieba fallback path.
+          - python-version: "3.13"
+            segmenter: "on"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install
+      - name: Install (fallback, no jieba)
+        if: matrix.segmenter == 'off'
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e . pytest
+      - name: Assert the fallback path is really being exercised
+        if: matrix.segmenter == 'off'
+        run: python -c "import importlib.util; assert importlib.util.find_spec('jieba') is None, 'jieba leaked into the fallback job'; from autarkia_textkit import HAS_JIEBA; assert HAS_JIEBA is False; print('fallback ok')"
+      - name: Install (with jieba extra)
+        if: matrix.segmenter == 'on'
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[segmenter]" pytest
+      - name: Assert the POS path is really being exercised
+        if: matrix.segmenter == 'on'
+        run: python -c "import jieba; from autarkia_textkit import HAS_JIEBA; assert HAS_JIEBA is True; print('jieba', jieba.__version__)"
       - name: Test
         run: python -m pytest -q
 
@@ -38,5 +56,9 @@ jobs:
           python -m twine check dist/*
       - name: Install the wheel in a clean dir and import it
         run: |
-          python -m pip install --no-deps --target /tmp/pkg dist/*.whl
-          PYTHONPATH=/tmp/pkg python -c "import autarkia_textkit as m, pathlib; assert (pathlib.Path(m.__file__).parent / 'py.typed').exists(); print('wheel ok', m.__version__)"
+          python -m pip install --no-deps --target /tmp/wheelpkg dist/*.whl
+          PYTHONPATH=/tmp/wheelpkg python -c "import autarkia_textkit as m, pathlib; assert (pathlib.Path(m.__file__).parent / 'py.typed').exists(); print('wheel ok', m.__version__)"
+      - name: Install the sdist in a clean dir and import it
+        run: |
+          python -m pip install --no-deps --target /tmp/sdistpkg dist/*.tar.gz
+          PYTHONPATH=/tmp/sdistpkg python -c "import autarkia_textkit as m, pathlib; assert (pathlib.Path(m.__file__).parent / 'py.typed').exists(); print('sdist ok', m.__version__)"
