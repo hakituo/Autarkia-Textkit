@@ -374,7 +374,7 @@ def split_chat_message(
             is_ellipsis_exclamation = False
             stripped_current = current.strip()
             if stripped_current.startswith("……") or stripped_current.startswith("..."):
-                after_ellipsis = stripped_current.lstrip("……").lstrip("...")
+                after_ellipsis = stripped_current.lstrip("…").lstrip(".")
                 if after_ellipsis and after_ellipsis[0] in exclamation_words_punct:
                     is_ellipsis_exclamation = True
             if is_ellipsis_exclamation and char in ["?", "？", "!", "！"]:
