@@ -27,7 +27,7 @@
 
 把模型**一段回复**切成**几条像人打出来的消息**，外加几个分母说得清的集合相似度函数。
 
-来自长期在线的 [Autarkia](https://qishihao.icu/projects/autarkia) agent 运行时——那里的切分规则是对着真实 QQ / Android 聊天行为一条条调出来的。整个系列见[组件库路线图](https://github.com/hakituo/Autarkia-tool/blob/main/ROADMAP.md)。
+来自长期在线的 [Autarkia](https://qishihao.dev/projects/autarkia) agent 运行时——那里的切分规则是对着真实 QQ / Android 聊天行为一条条调出来的。整个系列见[组件库路线图](https://github.com/hakituo/Autarkia-tool/blob/main/ROADMAP.md)。
 
 ### 为什么：切气泡不是 `text.split("。")`
 
@@ -119,11 +119,11 @@ jaccard(a, b)               # 并集分母
 
 ### 系列与链接
 
-- 项目页：<https://qishihao.icu/projects/autarkia>
+- 项目页：<https://qishihao.dev/projects/autarkia>
 - 运行时仓库：<https://github.com/hakituo/Autarkia>
 - 本包：<https://github.com/hakituo/Autarkia-Textkit>
 - 组件库路线图：<https://github.com/hakituo/Autarkia-tool/blob/main/ROADMAP.md>
-- 作者：Shihao Qi — <https://qishihao.icu>
+- 作者：Shihao Qi — <https://qishihao.dev>
 
 ### 许可
 
@@ -135,7 +135,7 @@ MIT
 
 Turn **one model reply** into **several messages that read like a human typed them** — plus set-similarity functions whose names state their actual denominator.
 
-Extracted from the [Autarkia](https://qishihao.icu/projects/autarkia) agent runtime, where these rules were tuned against real QQ/Android chat behavior. See the [component roadmap](https://github.com/hakituo/Autarkia-tool/blob/main/ROADMAP.md).
+Extracted from the [Autarkia](https://qishihao.dev/projects/autarkia) agent runtime, where these rules were tuned against real QQ/Android chat behavior. See the [component roadmap](https://github.com/hakituo/Autarkia-tool/blob/main/ROADMAP.md).
 
 ### Why
 
@@ -227,11 +227,11 @@ jaccard(a, b)               # union denominator
 
 ### The bigger picture
 
-- Project page: <https://qishihao.icu/projects/autarkia>
+- Project page: <https://qishihao.dev/projects/autarkia>
 - Runtime repository: <https://github.com/hakituo/Autarkia>
 - This package: <https://github.com/hakituo/Autarkia-Textkit>
 - Roadmap: <https://github.com/hakituo/Autarkia-tool/blob/main/ROADMAP.md>
-- Author: Shihao Qi — <https://qishihao.icu>
+- Author: Shihao Qi — <https://qishihao.dev>
 
 ### License
 
