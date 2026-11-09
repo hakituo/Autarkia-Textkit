@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "Autarkia-Textkit"
-version = "0.1.0"
+version = "0.1.1"
 description = "Chinese chat text segmentation and set similarity measures: bubble splitting, cleaning, numbered lists, emoji gluing, Markdown span repair, IoMax/containment/Jaccard/ngram."
 readme = "README.md"
 license = "MIT"
